@@ -20,7 +20,6 @@ public class Author : BaseModel
         // If the author has multiple books, the names should be separated by commas and the last name should be preceded by 'and'
         // If the author has only one book, the name should be returned as is
         // If the author has no books, an empty string should be returned
-        // TODO: 4.3 Implement the BooksToString method
         if(Books.Any())
             return string.Empty;
         var bookTitles = Books.Select(book => book.Title ?? "unknown").ToList();
