@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagementSystem.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20250116113928_Indexes")]
+    [Migration("20250125081611_Indexes")]
     partial class Indexes
     {
         /// <inheritdoc />
@@ -49,6 +49,8 @@ namespace LibraryManagementSystem.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name");
+
                     b.ToTable("Authors");
                 });
 
@@ -70,6 +72,10 @@ namespace LibraryManagementSystem.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ISBN");
+
+                    b.HasIndex("Title");
 
                     b.ToTable("Books");
                 });

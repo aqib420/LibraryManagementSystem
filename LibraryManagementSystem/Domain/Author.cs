@@ -1,3 +1,5 @@
+
+using System.ComponentModel.DataAnnotations;
 namespace LibraryManagementSystem.Domain;
 
 public class Author : BaseModel
@@ -15,19 +17,18 @@ public class Author : BaseModel
 
     public string BooksToString()
     {
-        // DO NOT MODIFY ABOVE THIS LINE
-        // This method should return a string with the names of the books of the author separated by commas
-        // If the author has multiple books, the names should be separated by commas and the last name should be preceded by 'and'
-        // If the author has only one book, the name should be returned as is
-        // If the author has no books, an empty string should be returned
-        if(Books.Any())
-            return string.Empty;
-        var bookTitles = Books.Select(book => book.Title ?? "unknown").ToList();
-        if(bookTitles.Count == 1)
-            return bookTitles[0];
+        // If there are no books, return an empty string
+    if (!Books.Any())
+        return string.Empty;
 
-        return string.Join(", ", bookTitles.Take(bookTitles.Count - 1)) + " and " + bookTitles.Last();
-        // throw new NotImplementedException("Author.BooksToString is not implemented");
+    var bookTitles = Books.Select(book => book.Title ?? "unknown").ToList();
+
+    // If there is only one book, return its title
+    if (bookTitles.Count == 1)
+        return bookTitles[0];
+
+    // If there are multiple books, format them properly
+    return string.Join(", ", bookTitles.Take(bookTitles.Count - 1)) + " and " + bookTitles.Last();
         // DO NOT MODIFY BELOW THIS LINE
     }
 }

@@ -49,16 +49,15 @@ public class AuthorsController(LibraryContext context) : Controller
     {
         // DO NOT MODIFY ABOVE THIS LINE
         var author = context.Authors.Find(id);
-        if(author == null)
+        if (author == null)
         {
             return NotFound();
         }
+
         context.Authors.Remove(author);
         context.SaveChanges();
         return RedirectToAction("Authors");
-        // throw new NotImplementedException("AuthorsController.Delete is not implemented");
-        // DO NOT MODIFY BELOW THIS LINE
-    }
+        }
 
     [HttpGet]
     public IActionResult Update(int id)

@@ -42,7 +42,7 @@ namespace LibraryManagementSystem.Domain
             // If the book has only one author, the name should be returned as is or "unknown" if the author's name is null
             // If the book has no authors, an empty string should be returned
             
-            if(Authors==null || Authors.Any())
+            if(!Authors.Any())
                 return string.Empty;
                 
             var authorNames = Authors.Select(author => author.Name ?? "unknown").ToList();

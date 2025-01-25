@@ -14,4 +14,7 @@ namespace LibraryManagementSystem.ViewModels
         public List<int>? SelectedAuthorIds { get; set; } = new List<int>();
         public List<Author> AvailableAuthors { get; set; } = new List<Author>();
     }
+    
+
+    
 }
