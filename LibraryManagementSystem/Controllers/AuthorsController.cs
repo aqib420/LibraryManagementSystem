@@ -30,6 +30,11 @@ public class AuthorsController(LibraryContext context) : Controller
     [HttpPost]
     public IActionResult Add(Author author)
     {
+        if(string.IsNullOrWhiteSpace(author.Name))
+        {
+            ModelState.AddModelError(nameof(author.Name), "Name is required");
+            return View(author);
+        }
         // DO NOT MODIFY ABOVE THIS LINE
         if (ModelState.IsValid)
         {
@@ -76,6 +81,11 @@ public class AuthorsController(LibraryContext context) : Controller
     [HttpPost]
     public IActionResult Update(Author author)
     {
+        if(string.IsNullOrWhiteSpace(author.Name))
+        {
+            ModelState.AddModelError(nameof(author.Name), "Name is required");
+            return View(author);
+        }
         // DO NOT MODIFY ABOVE THIS LINE
         // throw new NotImplementedException("AuthorsController.Update is not implemented");
         // DO NOT MODIFY BELOW THIS LINE
